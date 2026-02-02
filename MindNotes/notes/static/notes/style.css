@@ -1,0 +1,235 @@
+/* * {
+    padding: 0%;
+    margin: 0%;
+} */
+
+html,body {
+    width: 100%;
+    height: 100%;    
+}
+
+.main {
+    height: 90%;
+}
+
+.showcase {
+    height: 100%;
+    width: 30%;
+    
+}
+
+
+/* ======================================================
+   GLOBAL SMOOTHNESS
+   ====================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #272A2E;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ======================================================
+   NAVBAR – GLASS + DEPTH
+   ====================================================== */
+
+nav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(31, 41, 55, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+nav a {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(to right, #22d3ee, #6366f1);
+  transition: all 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ======================================================
+   MAIN LAYOUT ENTRY ANIMATION
+   ====================================================== */
+
+.main {
+  animation: fadeUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   SHOWCASE (LEFT PANEL)
+   ====================================================== */
+
+.showcase {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Scrollbar styling */
+.showcase::-webkit-scrollbar {
+  width: 6px;
+}
+
+.showcase::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22d3ee, #6366f1);
+  border-radius: 10px;
+}
+
+/* ======================================================
+   NOTE CARDS (note-div) – 3D HOVER + ANIMATION
+   ====================================================== */
+
+.note-div {
+  position: relative;
+  width: 95%;
+  height: 12%;
+  margin: 0.25rem;
+  border-radius: 1rem;
+  background-color: rgba(39, 42, 46, 0.85);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    background-color 0.3s ease;
+
+  will-change: transform, box-shadow;
+  transform-style: preserve-3d;
+
+  animation: noteFadeIn 0.45s ease-out both;
+}
+
+.note-div:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.65),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background-color: rgba(45, 48, 54, 0.95);
+}
+
+.note-div:active {
+  transform: translateY(-2px) scale(0.99);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Entry animation */
+@keyframes noteFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Glow overlay */
+.note-div::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    120deg,
+    rgba(34, 211, 238, 0.15),
+    rgba(99, 102, 241, 0.15)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.note-div:hover::after {
+  opacity: 1;
+}
+
+/* ======================================================
+   HERO PANEL – FLOATING GLASS EFFECT
+   ====================================================== */
+
+.hero {
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ======================================================
+   NEW NOTE BUTTON GLOW
+   ====================================================== */
+
+.new_note {
+  transition: all 0.3s ease;
+}
+
+.new_note:hover {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* ======================================================
+   PROFILE IMAGE HOVER
+   ====================================================== */
+
+el-dropdown img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+el-dropdown img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.4);
+}
