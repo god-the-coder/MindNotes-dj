@@ -1,0 +1,123 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    
+    <!-- Logo -->
+    <div class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <img
+        class="w-20 h-12 mr-2"
+        src="https://preview.redd.it/whats-the-ninja-logo-supposed-to-be-seems-intentional-v0-gkzo4dfhdf4d1.png?auto=webp&s=43b1bbf8c86c10336d350b6b448e3bfb6262932c"
+        alt="logo">
+      
+    </div>
+
+    <!-- Card -->
+    <div class="bg-white rounded-lg shadow dark:bg-gray-800 dark:border dark:border-gray-700">
+      <div class="p-6 sm:p-8 space-y-6">
+
+        <h1 class="text-xl font-bold tracking-tight text-gray-900 md:text-2xl dark:text-white">
+          Create an account
+        </h1>
+
+        <form class="space-y-5" method="post">
+          {% csrf_token %}
+          
+          <!-- Username -->
+          <div>
+            <label for="{{form.username.id_for_level}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Username
+            </label>
+            <input
+              type="text"
+              name="{{form.username.name}}"
+              value="{{form.username.value}}"
+              id="username"
+              required
+              class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900
+                     focus:border-primary-600 focus:ring-primary-600
+                     dark:border-gray-600 dark:bg-gray-700 dark:text-white
+                     dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+              placeholder="your_username">
+              <span class="text-danger">{{form.username.errors}}</span>
+          </div>
+
+          <!-- Password -->
+          <div>
+            <label for="{{form.password1.id_for_level}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Password
+            </label>
+            <input
+              type="password"
+              name="{{form.password1.name}}"
+              value="{{form.password1.value}}"
+              id="password"
+              required
+              placeholder="••••••••"
+              class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900
+                     focus:border-primary-600 focus:ring-primary-600
+                     dark:border-gray-600 dark:bg-gray-700 dark:text-white
+                     dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
+            <span class="text-danger">{{form.password1.errors}}</span>         
+          </div>
+
+          <!-- Confirm Password -->
+          <div>
+            <label for="{{form.password2.id_for_level}}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              Confirm password
+            </label>
+            <input
+              type="password"
+              name="{{form.password2.name}}"
+              value="{{form.password.value}}"
+              id="confirm_password"
+              required
+              placeholder="••••••••"
+              class="w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900
+                     focus:border-primary-600 focus:ring-primary-600
+                     dark:border-gray-600 dark:bg-gray-700 dark:text-white
+                     dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500">
+            <span class="text-danger">{{form.password2.errors}}</span>         
+          </div>
+
+          <!-- Terms -->
+          <div class="flex items-start gap-2">
+            <input
+              id="terms"
+              type="checkbox"
+              required
+              class="mt-1 h-4 w-4 rounded border-gray-300 bg-gray-50
+                     focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600">
+            <label for="terms" class="text-sm text-gray-500 dark:text-gray-300">
+              I accept the
+              <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
+                Terms and Conditions
+              </a>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <button
+            type="submit"
+            class="w-full rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-medium text-white
+                   hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300
+                   dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Create an account
+          </button>
+
+          <!-- Login -->
+          <p class="text-sm text-center text-gray-500 dark:text-gray-400">
+            Already have an account?
+            <a href="{% url 'login' %}" class="font-medium text-primary-600 hover:underline dark:text-primary-500">
+              Login here
+            </a>
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

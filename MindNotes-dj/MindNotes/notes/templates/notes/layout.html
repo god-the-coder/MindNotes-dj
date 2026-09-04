@@ -1,0 +1,21 @@
+{% load static %}
+{% load tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'notes/style.css' %}">
+    {% tailwind_css %}
+</head>
+<body class="bg-[#272A2E] text-white h-full w-full antialiased selection:bg-cyan-500/20 selection:text-cyan-300">
+    
+    {% block content %}{% endblock %}
+
+
+    <script src="{% static 'notes/app.js' %}"></script>
+    
+</body>
+</html>
