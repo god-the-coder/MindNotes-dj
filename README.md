@@ -1,5 +1,7 @@
 # MindNotes-dj
 
+Live: https://mindnotes-dj.onrender.com/notes/
+
 A full-featured note-taking web application built with **Django** and **Django REST Framework**. MindNotes allows users to create, manage, and organize their notes with tags, featuring both a web interface and RESTful API endpoints.
 
 ## 📋 Table of Contents
